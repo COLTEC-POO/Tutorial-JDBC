@@ -59,18 +59,18 @@ public class Conexao {
     public static Connection getConnection() {
 
         //String de conexão
-        String uri = "jdbc:mysql://localhost:3306/test/aluno";
+        String uri = "jdbc:mysql://localhost:3306/todolist";
 
         // usuário e senha de autenticação ao banco
         String usuario = "root";
-        String senha = "root";
+        String senha = "";
 
         // variável responsável por realizar a conexão ao banco
         Connection conn = null;
 
         try {
             //Carregando o driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             //abrindo a conexão
             conn = DriverManager.getConnection(uri, usuario, senha);
@@ -85,7 +85,9 @@ public class Conexao {
 ````
 
 Como podemos perceber, é preciso fornecer três parâmetros para realizar uma conexão com o banco de dados: `URL`, `usuario` e `senha`. 
-A variável `URL` contém a `String` de conexão necessária para identificar em qual banco a aplicacão deverá se conectar. 
+A variável `URL` contém a `String` de conexão necessária para identificar em qual banco a aplicacão deverá se conectar.
+Essa variável deve conter, necessáriamente, o prefixo referente ao tipo do SGBD (*jdbc:mysql*), o endereço do servidor onde o SGBD está em execução (*localhost:3306*), e nome do schema (*todolist*).
+
 Por sua vez, as variáveis `usuario` e `senha` armazenam o usuário e senha necessários para se conectar no banco. 
 Por fim, a conexão é armazenada na variável `conexao`. 
 É através desta variável que todas as consultas no banco de dados são realizadas.
